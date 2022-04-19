@@ -13,7 +13,7 @@ ESP_ConfigStore is a library for the ESP32/ESP8266 Arduino platform to store con
 * [Installation](#installation)
   * [Use Arduino Library Manager](#use-arduino-library-manager)
   * [Manual Install](#manual-install)
-  * [VS Code & PlatformIO](#vs-code--platformio
+  * [VS Code & PlatformIO](#vs-code--platformio)
 * [HOWTO Usage](#howto-usage)
 * [Examples](#examples)
   * [ 1. ConfigStore_ESP32](examples/ConfigStore_ESP32)
