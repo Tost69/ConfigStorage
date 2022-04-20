@@ -1,4 +1,4 @@
-## ESP_ConfigStore
+## ConfigStorage
 
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Tost69/ConfigStorage/blob/master/LICENSE)
 

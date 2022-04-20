@@ -1,19 +1,19 @@
 /****************************************************************************************************************************
   ConfigStorage_ESP32.ino
   for ESP32 boards
-  built by Tost69 https://github.com/Tost69/ESP_ConfigStore
+  built by Tost69 https://github.com/Tost69/ConfigStorage
   licensed under MIT license
  *****************************************************************************************************************************/
 
 #include <ArduinoJson.h> // https://github.com/bblanchon/ArduinoJson
 
 // by default, LittleFS is used; to use SPIFFS, uncomment the following line
-// #define ESP_CS_USE_SPIFFS true
-#define CONFIGSTORE_DEBUG true // show debug messages
+// #define CS_USE_SPIFFS true
+#define CONFIGSTORAGE_DEBUG true // show debug messages
 
 #include <ConfigStorage.h> // https://github.com/Tost69/ConfigStorage
 
-ConfigStore CS("/config.dat");
+ConfigStorage CS("/config.dat");
 DynamicJsonDocument configDoc(1024) = CS.get();
 
 // set parameter defaults
