@@ -2,7 +2,7 @@
   "name": "ESP_ConfigStore",
   "version": "0.0.1",
   "keywords": "littlefs, spiffs, json, arduinojson, data, esp32, esp32-c3, esp32-s2, esp32-s3, esp8266, configuration, config-store",
-  "description": "Library to store configuration parameters in the file system using LittleFS or SPIFFS for ESP8266 and ESP32.",
+  "description": "Library to store configuration parameters in the file system using LittleFS or SPIFFS for ESP8266 and ESP32. Using the ArduinoJson library the parameters are stored in memory as a JSON document and saved as a JSON file.",
   "authors":
   {
   "name":  "Tost69",
