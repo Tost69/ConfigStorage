@@ -1,7 +1,7 @@
 {
   "name": "ESP_ConfigStore",
   "version": "0.0.1",
-  "keywords": "littlefs, spiffs, data, esp32, esp32-c3, esp32-s2, esp32-s3, esp8266, configuration, config-store",
+  "keywords": "littlefs, spiffs, json, arduinojson, data, esp32, esp32-c3, esp32-s2, esp32-s3, esp8266, configuration, config-store",
   "description": "Library to store configuration parameters in the file system using LittleFS or SPIFFS for ESP8266 and ESP32.",
   "authors":
   {
@@ -29,6 +29,12 @@
       "name": "LittleFS_esp32",
       "version": "^1.0.6",
       "platforms": ["espressif32"]
+    },
+    {
+      "owner": "bblanchon",
+      "name": "ArduinoJson",
+      "version": "^6.19.4",
+      "platforms": [ "espressif32", "espressif8266" ]
     }
   ],
   "frameworks": "arduino",
@@ -36,3 +42,4 @@
   "examples": "examples/*/*/*.ino",
   "headers": "ESP_ConfigStore.h"
 }
+
