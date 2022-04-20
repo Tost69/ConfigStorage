@@ -5,7 +5,6 @@
   licensed under MIT license
  *****************************************************************************************************************************/
 
-#include <Arduino.h>
 #include <ArduinoJson.h> // https://github.com/bblanchon/ArduinoJson
 
 // by default, LittleFS is used; to use SPIFFS, uncomment the following line
