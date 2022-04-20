@@ -1,7 +1,7 @@
-## ESP_ConfigStore
-ESP_ConfigStore is a library for the ESP32/ESP8266 Arduino platform to store configuration parameters in the file system.
+## ConfigStorage
+ConfigStorage is a library for the ESP32/ESP8266 Arduino platform to store configuration parameters in the file system.
 
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Tost69/ESP_ConfigStore/blob/master/LICENSE)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Tost69/ConfigStorage/blob/master/LICENSE)
 
 ---
 ---
@@ -16,8 +16,8 @@ ESP_ConfigStore is a library for the ESP32/ESP8266 Arduino platform to store con
   * [VS Code & PlatformIO](#vs-code--platformio)
 * [HOWTO Usage](#howto-usage)
 * [Examples](#examples)
-  * [ 1. ConfigStore_ESP32](examples/ConfigStore_ESP32)
-  * [ 2. ConfigStore_ESP8266](examples/ConfigStore_ESP8266)
+  * [ 1. ConfigStorage_ESP32](examples/ConfigStorage_ESP32)
+  * [ 2. ConfigStorage_ESP8266](examples/ConfigStorage_ESP8266)
 * [Debug](#debug)
 * [Troubleshooting](#troubleshooting)
 * [Issues](#issues)
@@ -43,20 +43,20 @@ ESP_ConfigStore is a library for the ESP32/ESP8266 Arduino platform to store con
 ## Installation
 
 ### Use Arduino Library Manager
-The best and easiest way is to use `Arduino Library Manager`. Search for `ESP_ConfigStore`, then select / install the latest version. You can also use this link [![arduino-library-badge](https://www.ardu-badge.com/badge/ESP_ConfigStore.svg?)](https://www.ardu-badge.com/ESP_ConfigStore) for more detailed instructions.
+The best and easiest way is to use `Arduino Library Manager`. Search for `ConfigStorage`, then select / install the latest version. You can also use this link [![arduino-library-badge](https://www.ardu-badge.com/badge/ConfigStorage.svg?)](https://www.ardu-badge.com/ConfigStorage) for more detailed instructions.
 
 ### Manual Install
 
-1. Navigate to [ESP_ConfigStore](https://github.com/Tost69/ESP_ConfigStore) page.
-2. Download the latest release `ESP_ConfigStore-master.zip`.
-3. Extract the zip file to `ESP_ConfigStore-master` directory 
-4. Copy the whole `ESP_ConfigStore-master` folder to Arduino libraries' directory such as `~/Arduino/libraries/`.
+1. Navigate to [ConfigStorage](https://github.com/Tost69/ConfigStorage) page.
+2. Download the latest release `ConfigStorage-main.zip`.
+3. Extract the zip file to `ConfigStorage-main` directory 
+4. Copy the whole `ConfigStorage-main` folder to Arduino libraries' directory such as `~/Arduino/libraries/`.
 
 ### VS Code & PlatformIO:
 
 1. Install [VS Code](https://code.visualstudio.com/)
 2. Install [PlatformIO](https://platformio.org/platformio-ide)
-3. Install [**ESP_ConfigStore** library](https://registry.platformio.org/libraries/tost69/ESP_ConfigStore) by using [Library Manager](https://registry.platformio.org/libraries/tost69/ESP_ConfigStore/installation). Search for **ESP_ConfigStore** in [Platform.io Author's Libraries](https://platformio.org/lib/search?query=author:%22Tost69%22)
+3. Install [**ConfigStorage** library](https://registry.platformio.org/libraries/tost69/ConfigStorage) by using [Library Manager](https://registry.platformio.org/libraries/tost69/ConfigStorage/installation). Search for **ConfigStorage** in [Platform.io Author's Libraries](https://platformio.org/lib/search?query=author:%22Tost69%22)
 4. Use included [platformio.ini](platformio/platformio.ini) file from examples to ensure that all dependent libraries will installed automatically. Please visit documentation for the other options and examples at [Project Configuration File](https://docs.platformio.org/page/projectconf.html)
 
 ---

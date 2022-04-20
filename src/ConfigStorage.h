@@ -1,6 +1,6 @@
 /****************************************************************************************************************************
-ESP_ConfigStore.h
-For ESP32 and ESP8266 boards
+ConfigStorage.h
+for ESP32 and ESP8266 boards
 
 Version Modified By   Date      Comments
 ------- -----------  ---------- -----------
@@ -9,12 +9,12 @@ Version Modified By   Date      Comments
 
 #pragma once
 
-#ifndef ESP_ConfigStore_H
-#  define ESP_ConfigStore_H
+#ifndef ConfigStorage_H
+#  define ConfigStorage_H
 
-#  ifndef CONFIGSTORE_DEBUG
-#    define CONFIGSTORE_DEBUG false
-#  endif // #ifndef CONFIGSTORE_DEBUG
+#  ifndef ConfigStorage_DEBUG
+#    define ConfigStorage_DEBUG false
+#  endif // #ifndef ConfigStorage_DEBUG
 
 #  if defined(ARDUINO) && (ARDUINO >= 100)
 #    include <Arduino.h>
@@ -22,62 +22,62 @@ Version Modified By   Date      Comments
 #    include <WProgram.h>
 #  endif // #defined(ARDUINO) && (ARDUINO >= 100)
 
-#  ifndef ESP_CONFIG_STORE_VERSION
-#    define ESP_CONFIG_STORE_VERSION             "ESP_ConfigStore v0.0.1"
-#    define ESP_CONFIG_STORE_VERSION_MAJOR       0
-#    define ESP_CONFIG_STORE_VERSION_MINOR       0
-#    define ESP_CONFIG_STORE_VERSION_PATCH       1
-#    define ESP_CONFIG_STORE_VERSION_INT         0000001
-#  endif // #ifndef ESP_CONFIG_STORE_VERSION
+#  ifndef CONFIG_STORAGE_VERSION
+#    define CONFIG_STORAGE_VERSION             "ConfigStorage v0.0.1"
+#    define CONFIG_STORAGE_VERSION_MAJOR       0
+#    define CONFIG_STORAGE_VERSION_MINOR       0
+#    define CONFIG_STORAGE_VERSION_PATCH       1
+#    define CONFIG_STORAGE_VERSION_INT         0000001
+#  endif // #ifndef CONFIG_STORAGE_VERSION
 
-#  define ESP_CONFIGSTORE_VERSION ESP_CONFIG_STORE_VERSION
+#  define ConfigStorage_VERSION CONFIG_STORAGE_VERSION
 
-//#define ESP_CS_USE_LITTLEFS    true
-//#define ESP_CS_USE_SPIFFS      false
+//#define CS_USE_LITTLEFS    true
+//#define CS_USE_SPIFFS      false
 
 #  ifdef ESP32
 #    include <ArduinoJson.h>
-#    if (!ESP_CS_USE_SPIFFS && !ESP_CS_USE_LITTLEFS)
+#    if (!CS_USE_SPIFFS && !CS_USE_LITTLEFS)
 
-#      if (CONFIGSTORE_DEBUG)
+#      if (ConfigStorage_DEBUG)
 #        warning Neither LittleFS nor SPIFFS selected. Default to LittleFS!
-#      endif // #if (CONFIGSTORE_DEBUG)
+#      endif // #if (ConfigStorage_DEBUG)
 
-#      ifdef ESP_CS_USE_LITTLEFS
-#        undef ESP_CS_USE_LITTLEFS
-#        define ESP_CS_USE_LITTLEFS true
-#      endif // #ifdef ESP_CS_USE_LITTLEFS
+#      ifdef CS_USE_LITTLEFS
+#        undef CS_USE_LITTLEFS
+#        define CS_USE_LITTLEFS true
+#      endif // #ifdef CS_USE_LITTLEFS
 
-#    endif // #if (!ESP_CS_USE_SPIFFS && !ESP_CS_USE_LITTLEFS)
+#    endif // #if (!CS_USE_SPIFFS && !CS_USE_LITTLEFS)
 #  endif // #ifdef ESP32
 
 #  ifdef ESP8266
 #    include <ArduinoJson.h>
-#    if (!ESP_CS_USE_SPIFFS && !ESP_CS_USE_LITTLEFS)
+#    if (!CS_USE_SPIFFS && !CS_USE_LITTLEFS)
 
-#      if (CONFIGSTORE_DEBUG)
+#      if (ConfigStorage_DEBUG)
 #        warning Neither LittleFS nor SPIFFS selected. Default to LittleFS!
-#      endif // #if (CONFIGSTORE_DEBUG)
+#      endif // #if (ConfigStorage_DEBUG)
 
-#      ifdef ESP_CS_USE_LITTLEFS
-#        undef ESP_CS_USE_LITTLEFS
-#        define ESP_CS_USE_LITTLEFS	true
-#      endif // #ifdef ESP_CS_USE_LITTLEFS
+#      ifdef CS_USE_LITTLEFS
+#        undef CS_USE_LITTLEFS
+#        define CS_USE_LITTLEFS	true
+#      endif // #ifdef CS_USE_LITTLEFS
 
-#    endif // #if (!ESP_CS_USE_SPIFFS && !ESP_CS_USE_LITTLEFS)
+#    endif // #if (!CS_USE_SPIFFS && !CS_USE_LITTLEFS)
 #  endif // #ifdef ESP8266
 
 // default to use LITTLEFS (higher priority), then SPIFFS
-#  if ( ESP_CS_USE_LITTLEFS || ESP_CS_USE_SPIFFS )
+#  if ( CS_USE_LITTLEFS || CS_USE_SPIFFS )
 #    include <FS.h>
 #    ifdef ESP32
-#      if ESP_CS_USE_LITTLEFS
+#      if CS_USE_LITTLEFS
 
 //       check cores/esp32/esp_arduino_version.h and cores/esp32/core_version.h
 #        if ( defined(ESP_ARDUINO_VERSION_MAJOR) && (ESP_ARDUINO_VERSION_MAJOR >= 2) )
-#          if (CONFIGSTORE_DEBUG)
+#          if (ConfigStorage_DEBUG)
 #            warning Using ESP32 Core 1.0.6 or 2.0.0+
-#          endif // #if (CONFIGSTORE_DEBUG)
+#          endif // #if (ConfigStorage_DEBUG)
 
 //         the library has been merged into esp32 core from release 1.0.6
 #          include <LittleFS.h>
@@ -85,9 +85,9 @@ Version Modified By   Date      Comments
 
 #        else // #if ( defined(ESP_ARDUINO_VERSION_MAJOR) && (ESP_ARDUINO_VERSION_MAJOR >= 2) )
 
-#          if (CONFIGSTORE_DEBUG)
+#          if (ConfigStorage_DEBUG)
 #            warning Using ESP32 Core 1.0.5-. You must install LITTLEFS library
-#          endif // #if (CONFIGSTORE_DEBUG)
+#          endif // #if (ConfigStorage_DEBUG)
 
 //         the library has been merged into esp32 core from release 1.0.6
 #          include <LITTLEFS.h>             // https://github.com/lorol/LITTLEFS
@@ -95,27 +95,27 @@ Version Modified By   Date      Comments
 
 #        endif // #if ( defined(ESP_ARDUINO_VERSION_MAJOR) && (ESP_ARDUINO_VERSION_MAJOR >= 2) )
 
-#      else // #if ESP_CS_USE_LITTLEFS
+#      else // #if CS_USE_LITTLEFS
 
 //       ESP32 core 1.0.4 still uses SPIFFS
 #        include "SPIFFS.h"
 #        define FileFS	SPIFFS
 
-#      endif // #if ESP_CS_USE_LITTLEFS
+#      endif // #if CS_USE_LITTLEFS
 
 #    else // #ifdef ESP32
 
 //     from ESP8266 core 2.7.1
 #      include <LittleFS.h>
 
-#      if ESP_CS_USE_LITTLEFS
+#      if CS_USE_LITTLEFS
 #        define FileFS    LittleFS
-#      else // #if ESP_CS_USE_LITTLEFS
+#      else // #if CS_USE_LITTLEFS
 #        define FileFS   SPIFFS
-#      endif // #if ESP_CS_USE_LITTLEFS
+#      endif // #if CS_USE_LITTLEFS
 
 #    endif // #ifdef ESP32   
-#  endif // #if ( ESP_CS_USE_LITTLEFS || ESP_CS_USE_SPIFFS )   
+#  endif // #if ( CS_USE_LITTLEFS || CS_USE_SPIFFS )   
 
 //#include <Arduino.h>
 //#include <ArduinoJson.h>
@@ -125,10 +125,10 @@ Version Modified By   Date      Comments
 //#define FileFS LITTLEFS
 //#define FS_Name "LittleFS"
 
-class ConfigStore
+class ConfigStorage
 {
 public:
-  ConfigStore(const char *path)
+  ConfigStorage(const char *path)
   {
     if (!FileFS.begin())
     {
@@ -251,4 +251,4 @@ private:
   };
 };
 
-#endif // ESP_ConfigStore_H
+#endif // ConfigStorage_H

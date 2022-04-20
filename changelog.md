@@ -1,6 +1,6 @@
 ## ESP_ConfigStore
 
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Tost69/ESP_ConfigStore/blob/master/LICENSE)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Tost69/ConfigStorage/blob/master/LICENSE)
 
 ---
 ---
