@@ -1,5 +1,5 @@
 /****************************************************************************************************************************
-  ConfigStore_ESP32.ino
+  ConfigStorage_ESP32.ino
   for ESP32 boards
   built by Tost69 https://github.com/Tost69/ESP_ConfigStore
   licensed under MIT license
@@ -11,7 +11,7 @@
 // #define ESP_CS_USE_SPIFFS true
 #define CONFIGSTORE_DEBUG true // show debug messages
 
-#include <ESP_ConfigStore.h> // https://github.com/Tost69/ESP_ConfigStore
+#include <ConfigStorage.h> // https://github.com/Tost69/ConfigStorage
 
 ConfigStore CS("/config.dat");
 DynamicJsonDocument configDoc(1024) = CS.get();
