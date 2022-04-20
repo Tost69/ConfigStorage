@@ -1,5 +1,6 @@
 ## ConfigStorage
-ConfigStorage is a library for the ESP32/ESP8266 Arduino platform to store configuration parameters in the file system using LittleFS or SPIFFS for ESP8266 and ESP32. Using the ArduinoJson library the parameters are stored in memory as a JSON document and saved as a JSON file.
+ConfigStorage is a library for the ESP32/ESP8266 Arduino platform to store configuration parameters in the file system using LittleFS or SPIFFS.
+Using the ArduinoJson library the parameters are stored in memory as a JSON document and saved as a JSON file.
 
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Tost69/ConfigStorage/blob/master/LICENSE)
 
