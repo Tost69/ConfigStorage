@@ -122,7 +122,7 @@ public:
   {
     if (!FileFS.begin())
     {
-		ifdef CONFIGSTORAGE_DEBUG
+		#ifdef CONFIGSTORAGE_DEBUG
       Serial.println("LittleFS failed");
 		#endif
     }
@@ -254,10 +254,9 @@ private:
       {
 				#ifdef CONFIGSTORAGE_DEBUG
         Serial.println("Config file missing");
-				#enif
+				#endif
       }
     }
   };
 };
-
 #endif // ConfigStorage_H
