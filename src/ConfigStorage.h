@@ -5,7 +5,7 @@ for ESP32 and ESP8266 boards
 Version Modified By   Date      Comments
 ------- -----------  ---------- -----------
 0.0.1   Tom          20/04/2022 Initial coding
-0.0.2   ReinaldoAF   17/01/2023 Include #ifdef CONFIGSTORAGE_DEBUG in Serial printing informations 
+0.0.2   ReinaldoAF   17/01/2023 Include #if(CONFIGSTORAGE_DEBUG) in Serial printing informations 
 															  Removed useless commented lines
 *****************************************************************************************************************************/
 
@@ -122,13 +122,17 @@ public:
   {
     if (!FileFS.begin())
     {
+<<<<<<< Updated upstream
 		#ifdef CONFIGSTORAGE_DEBUG
+=======
+		#if(CONFIGSTORAGE_DEBUG)
+>>>>>>> Stashed changes
       Serial.println("LittleFS failed");
 		#endif
     }
     else
     {
-		#ifdef CONFIGSTORAGE_DEBUG
+		#if(CONFIGSTORAGE_DEBUG)
 			Serial.println("LittleFS started");
 		#endif
       fileName = path;
@@ -177,19 +181,19 @@ private:
     {
       if (FileFS.exists(fileName))
       {
-				#ifdef CONFIGSTORAGE_DEBUG
+				#if(CONFIGSTORAGE_DEBUG)
         Serial.println("Config file exists");
 				#endif
         File configFile = FileFS.open(fileName, "r");
         if (!configFile)
         {
-					#ifdef CONFIGSTORAGE_DEBUG
+					#if(CONFIGSTORAGE_DEBUG)
           Serial.println("Reading config file failed");
 					#endif
         }
         else
         {
-					#ifdef CONFIGSTORAGE_DEBUG
+					#if(CONFIGSTORAGE_DEBUG)
           Serial.println("Reading config file OK");
 					#endif
           deserializeJson(this->configDoc, configFile);
@@ -198,7 +202,7 @@ private:
       }
       else
       {
-				#ifdef CONFIGSTORAGE_DEBUG
+				#if(CONFIGSTORAGE_DEBUG)
         Serial.println("Config file missing");
 				#endif
       }
@@ -215,13 +219,13 @@ private:
       {
         serializeJson(configDoc, configFile);
         configFile.close();
-				#ifdef CONFIGSTORAGE_DEBUG
+				#if(CONFIGSTORAGE_DEBUG)
         Serial.println("Saving config file OK");
 				#endif
       }
       else
       {
-				#ifdef CONFIGSTORAGE_DEBUG
+				#if(CONFIGSTORAGE_DEBUG)
         Serial.println("Saving config file failed");
 				#endif
       }
@@ -234,25 +238,25 @@ private:
     {
       if (FileFS.exists(fileName))
       {
-				#ifdef CONFIGSTORAGE_DEBUG
+				#if(CONFIGSTORAGE_DEBUG)
         Serial.println("Config file exists");
 				#endif
         if (FileFS.remove(fileName))
         {
-					#ifdef CONFIGSTORAGE_DEBUG
+					#if(CONFIGSTORAGE_DEBUG)
           Serial.println("Removing config file OK");
 					#endif
         }
         else
         {
-					#ifdef CONFIGSTORAGE_DEBUG
+					#if(CONFIGSTORAGE_DEBUG)
           Serial.println("Removing config file failed");
 					#endif
         }
       }
       else
       {
-				#ifdef CONFIGSTORAGE_DEBUG
+				#if(CONFIGSTORAGE_DEBUG)
         Serial.println("Config file missing");
 				#endif
       }
