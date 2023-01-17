@@ -5,6 +5,8 @@ for ESP32 and ESP8266 boards
 Version Modified By   Date      Comments
 ------- -----------  ---------- -----------
 0.0.1   Tom          20/04/2022 Initial coding
+0.0.2   ReinaldoAF   17/01/2023 Include #ifdef CONFIGSTORAGE_DEBUG in Serial printing informations 
+															  Removed useless commented lines
 *****************************************************************************************************************************/
 
 #pragma once
@@ -23,17 +25,14 @@ Version Modified By   Date      Comments
 #  endif // #defined(ARDUINO) && (ARDUINO >= 100)
 
 #  ifndef CONFIG_STORAGE_VERSION
-#    define CONFIG_STORAGE_VERSION             "ConfigStorage v0.0.1"
+#    define CONFIG_STORAGE_VERSION             "ConfigStorage v0.0.2"
 #    define CONFIG_STORAGE_VERSION_MAJOR       0
 #    define CONFIG_STORAGE_VERSION_MINOR       0
-#    define CONFIG_STORAGE_VERSION_PATCH       1
-#    define CONFIG_STORAGE_VERSION_INT         0000001
+#    define CONFIG_STORAGE_VERSION_PATCH       2
+#    define CONFIG_STORAGE_VERSION_INT         0000002
 #  endif // #ifndef CONFIG_STORAGE_VERSION
 
 #  define ConfigStorage_VERSION CONFIG_STORAGE_VERSION
-
-//#define CS_USE_LITTLEFS    true
-//#define CS_USE_SPIFFS      false
 
 #  ifdef ESP32
 #    include <ArduinoJson.h>
@@ -72,7 +71,6 @@ Version Modified By   Date      Comments
 #    include <FS.h>
 #    ifdef ESP32
 #      if CS_USE_LITTLEFS
-
 //       check cores/esp32/esp_arduino_version.h and cores/esp32/core_version.h
 #        if ( defined(ESP_ARDUINO_VERSION_MAJOR) && (ESP_ARDUINO_VERSION_MAJOR >= 2) )
 #          if (ConfigStorage_DEBUG)
@@ -117,14 +115,6 @@ Version Modified By   Date      Comments
 #    endif // #ifdef ESP32   
 #  endif // #if ( CS_USE_LITTLEFS || CS_USE_SPIFFS )   
 
-//#include <Arduino.h>
-//#include <ArduinoJson.h>
-//#include "FS.h"
-//#include <LITTLEFS.h>
-
-//#define FileFS LITTLEFS
-//#define FS_Name "LittleFS"
-
 class ConfigStorage
 {
 public:
@@ -132,12 +122,15 @@ public:
   {
     if (!FileFS.begin())
     {
+		ifdef CONFIGSTORAGE_DEBUG
       Serial.println("LittleFS failed");
+		#endif
     }
     else
     {
-      Serial.println("LittleFS started");
-
+		#ifdef CONFIGSTORAGE_DEBUG
+			Serial.println("LittleFS started");
+		#endif
       fileName = path;
       readConfigFile();
     }
@@ -184,24 +177,30 @@ private:
     {
       if (FileFS.exists(fileName))
       {
+				#ifdef CONFIGSTORAGE_DEBUG
         Serial.println("Config file exists");
-
+				#endif
         File configFile = FileFS.open(fileName, "r");
         if (!configFile)
         {
+					#ifdef CONFIGSTORAGE_DEBUG
           Serial.println("Reading config file failed");
+					#endif
         }
         else
         {
+					#ifdef CONFIGSTORAGE_DEBUG
           Serial.println("Reading config file OK");
-
+					#endif
           deserializeJson(this->configDoc, configFile);
           configFile.close();
         }
       }
       else
       {
+				#ifdef CONFIGSTORAGE_DEBUG
         Serial.println("Config file missing");
+				#endif
       }
     }
   };
@@ -216,12 +215,15 @@ private:
       {
         serializeJson(configDoc, configFile);
         configFile.close();
-
+				#ifdef CONFIGSTORAGE_DEBUG
         Serial.println("Saving config file OK");
+				#endif
       }
       else
       {
+				#ifdef CONFIGSTORAGE_DEBUG
         Serial.println("Saving config file failed");
+				#endif
       }
     }
   };
@@ -232,20 +234,27 @@ private:
     {
       if (FileFS.exists(fileName))
       {
+				#ifdef CONFIGSTORAGE_DEBUG
         Serial.println("Config file exists");
-
+				#endif
         if (FileFS.remove(fileName))
         {
+					#ifdef CONFIGSTORAGE_DEBUG
           Serial.println("Removing config file OK");
+					#endif
         }
         else
         {
+					#ifdef CONFIGSTORAGE_DEBUG
           Serial.println("Removing config file failed");
+					#endif
         }
       }
       else
       {
+				#ifdef CONFIGSTORAGE_DEBUG
         Serial.println("Config file missing");
+				#enif
       }
     }
   };
