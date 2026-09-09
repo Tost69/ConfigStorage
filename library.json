@@ -1,23 +1,24 @@
 {
   "name": "ConfigStorage",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "keywords": "littlefs, spiffs, json, arduinojson, data, esp32, esp32-c3, esp32-s2, esp32-s3, esp8266, configuration, storage, config-storage",
   "description": "Library to store configuration parameters in the file system using LittleFS or SPIFFS for ESP8266 and ESP32. Using the ArduinoJson library the parameters are stored in memory as a JSON document and saved as a JSON file.",
+  "license": "MIT",
   "authors":
   {
-  "name":  "Tost69",
-  "url":   "https://github.com/Tost69",
-  "maintainer": true
-  },  
+    "name": "Tost69",
+    "url": "https://github.com/Tost69",
+    "maintainer": true
+  },
   "repository":
   {
-      "type": "git",
-      "url": "https://github.com/Tost69/ConfigStorage"
+    "type": "git",
+    "url": "https://github.com/Tost69/ConfigStorage"
   },
   "homepage": "https://github.com/Tost69/ConfigStorage",
   "export": {
     "exclude": [
-      "linux",
+      "platformio",
       "extras",
       "tests"
     ]
@@ -25,21 +26,14 @@
   "dependencies":
   [
     {
-      "owner": "lorol",
-      "name": "LittleFS_esp32",
-      "version": "^1.0.6",
-      "platforms": ["espressif32"]
-    },
-    {
       "owner": "bblanchon",
       "name": "ArduinoJson",
-      "version": "^6.19.4",
+      "version": ">=6.21.0,<8",
       "platforms": [ "espressif32", "espressif8266" ]
     }
   ],
   "frameworks": "arduino",
   "platforms": [ "espressif32", "espressif8266" ],
-  "examples": "examples/*/*/*.ino",
+  "examples": "examples/*/*.ino",
   "headers": "ConfigStorage.h"
 }
-
